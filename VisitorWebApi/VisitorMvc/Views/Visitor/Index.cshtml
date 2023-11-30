@@ -1,0 +1,35 @@
+﻿@model VisitorGetAllDto
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-6">Список посетителей</h1>
+    <a href="/Visitor/Add/" class="btn btn-primary">Добавить посетителя</a>
+    <table class=" table">
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Почта</th>
+            <th>Номер телефона</th>
+            <th>Врач</th>            
+            <th>Действие</th>
+        </tr>
+        @foreach (var visitor in Model.Visitors)
+        {
+            <tr>
+                <td>@visitor.Id</td>
+                <td>@visitor.FirstName</td>
+                <td>@visitor.LastName</td>
+                <td>@visitor.Email</td>
+                <td>@visitor.Phone</td>               
+                <td>@Model.Doctors.FirstOrDefault(x => x.Id == visitor.DoctorId)?.Name</td>
+                <td>
+                    <a href="/Visitor/Edit/@visitor.Id">Редактировать</a>
+                    <a href="Visitor/Delete/@visitor.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

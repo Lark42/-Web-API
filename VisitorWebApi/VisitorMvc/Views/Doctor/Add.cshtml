@@ -1,0 +1,17 @@
+﻿@model VisitorGetAllDto
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Добавление врача</h1>
+     
+    <form action ="/Doctor/Add/" method="post">
+        <div class="mb-3">
+            <label class="form-label">Специальность врача</label>
+            <input type="text" name="Name" class="form-control" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>

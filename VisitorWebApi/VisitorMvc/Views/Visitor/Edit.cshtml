@@ -1,0 +1,47 @@
+﻿@model VisitorEditViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-6">Редактирование посетителя</h1>
+    <form action="/Visitor/Edit/" method="post">
+        <div class="mb-3">
+            <label class="form-label">Обязательные поля для заполнения (*)</label>
+        </div>
+        <input type="hidden" name="visitor.id" value="@Model?.Visitor?.Id" />
+        <div class="mb-3">
+            <label class="form-label">Врач*</label>    
+            <select name="visitor.doctorId" class="form-control">
+                <option value="">-</option>
+                @foreach (var doctor in Model.Doctors ?? new List<Doctor>())
+                {
+                    <option value="@doctor.Id" selected="@(Model.Visitor?.DoctorId == doctor.Id)">@doctor.Name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Имя*</label>
+            <input type="text" name="visitor.FirstName" value="@Model?.Visitor?.FirstName" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Фамилия*</label>
+            <input type="text" name="visitor.LastName" value="@Model?.Visitor?.LastName" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Почта</label>
+            <input type="text" name="visitor.Email" value="@Model?.Visitor?.Email" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Номер телефона</label>
+            <input type="text" name="visitor.Phone" value="@Model?.Visitor?.Phone" class="form-control" autocomplete="off" />
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+
+    </form>
+</div>

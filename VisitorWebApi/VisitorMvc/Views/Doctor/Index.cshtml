@@ -1,0 +1,28 @@
+﻿@model List<Doctor>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-6">Список врачей</h1>
+    <a href="/Doctor/Add/" class="btn btn-primary">Добавить врача</a>
+    <table class ="table">
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Действие</th>
+        </tr>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.Id</td>
+                <td>@doctor.Name</td>
+                <td>
+                    <a href="/Doctor/Edit/@doctor.Id"> Редактировать</a>
+                    <a href="/Doctor/Delete/@doctor.Id"> Удалить</a>
+                    </td>
+
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,17 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h2 class="display-6">Редактирование врача</h2>
+
+    <form action="/Doctor/Edit/@Model.Id" method="post">
+        <div class="mb-3">
+            <label class="form-label">Специальность врача</label>
+            <input type="text" name="name" value="@Model.Name" class="form-control" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>

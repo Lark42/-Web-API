@@ -1,0 +1,59 @@
+﻿@model List<Doctor>
+@{
+    var title = "Добавление посетителя";
+    ViewData["Title"] = title;
+}
+
+<div class="text-left">
+    <h1 class="display-6">@title</h1>
+
+    <form action="/Visitor/Add/" method="post">
+        <div class="mb-3">
+            <label class="form-label">Обязательные поля для заполнения (*)</label>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Врач*</label>
+            <select name="doctorId" class="form-control">
+                <option value ="">-</option>
+                @foreach (var doctor in Model)
+                {
+                    <option value="@doctor.Id">@doctor.Name</option>
+                }
+            </select>   
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Имя*</label>
+            <input type="text" name="name" autocomplete="off" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Фамилия*</label>
+            <input type="text" name="lastName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Почта</label>
+            <input type="text" name="Email" class="form-control" placeholder="name@example.com" /> 
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Номер телефона</label>
+            <input type="text" name="Phone" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+                Запомнить меня!                 
+            </label>
+        </div>
+
+        <div class="mb-1">
+            <label class="form-label"></label>
+         </div>
+
+
+        <button type="submit" class="btn btn-primary"> Сохранить</button>
+    </form>
+</div>
